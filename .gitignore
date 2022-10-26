@@ -1,0 +1,3 @@
+# Ignore the source song XML files (besides the example or two) and the generated Powerpoint files
+songs/
+powerpoints/
