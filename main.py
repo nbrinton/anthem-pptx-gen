@@ -1,4 +1,5 @@
 import os
+import argparse
 from pptx import Presentation
 from pptx.util import Inches
 from pptx.enum.text import PP_PARAGRAPH_ALIGNMENT as PP_ALIGN
@@ -6,9 +7,6 @@ from pptx.util import Pt
 from pptx.dml.color import RGBColor
 from bs4 import BeautifulSoup
 from slugify import slugify
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
 def add_verse_slide(pres, verse):
@@ -71,14 +69,30 @@ def add_verse_slide(pres, verse):
     slide.shapes.add_picture('anthem-logo.png', Inches(11.75), Inches(0))
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('Generating powerpoint presentations...')
 
-    # src_dir = 'songs'
-    src_dir = 'songs'
-    output_dir = 'powerpoints'
-    base_pptx = 'base.pptx'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('src_dir')
+    parser.add_argument('out_dir')
+    parser.add_argument('pptx_base')
+    args = parser.parse_args()
+
+    src_dir = args.src_dir
+    output_dir = args.out_dir
+    base_pptx = args.pptx_base
+
+    if not os.path.exists(src_dir) or not os.path.exists(output_dir) or not os.path.exists(base_pptx):
+        if not os.path.exists(src_dir):
+            print(f'Provided src_dir of {src_dir} does not exist.')
+
+        if not os.path.exists(output_dir):
+            print(f'Provided out_dir of {output_dir} does not exist.')
+
+        if not os.path.exists(base_pptx):
+            print(f'Provided pptx_base of {base_pptx} does not exist.')
+
+        exit(-1)
 
     hymn_xml_files = os.listdir(src_dir)
 

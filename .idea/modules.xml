@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/westside.iml" filepath="$PROJECT_DIR$/.idea/westside.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/anthem-pptx-gen.iml" filepath="$PROJECT_DIR$/.idea/anthem-pptx-gen.iml" />
     </modules>
   </component>
 </project>
